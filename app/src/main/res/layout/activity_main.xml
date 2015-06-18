@@ -5,18 +5,16 @@
               android:orientation="horizontal"
     >
 
-    <EditText
-        android:id="@+id/search"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    </LinearLayout>
+
+    <ExpandableListView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="@string/search"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        />
+        android:id="@+id/beastListView"
+        android:layout_weight="1"/>
 
 </LinearLayout>
