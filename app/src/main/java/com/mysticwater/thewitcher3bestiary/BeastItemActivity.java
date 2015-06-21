@@ -1,9 +1,11 @@
 package com.mysticwater.thewitcher3bestiary;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class BeastItemActivity extends ActionBarActivity {
@@ -11,14 +13,14 @@ public class BeastItemActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_beast_item);
-  }
+    //setContentView(R.layout.activity_beast_item);
+    Intent intent = getIntent();
+    String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_beast_item, menu);
-    return true;
+    TextView textView = new TextView(this);
+    textView.setTextSize(40);
+    textView.setText(message);
+    setContentView(textView);
   }
 
   @Override

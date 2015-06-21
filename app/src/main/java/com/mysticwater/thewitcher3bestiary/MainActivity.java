@@ -1,12 +1,15 @@
 package com.mysticwater.thewitcher3bestiary;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.hardware.camera2.TotalCaptureResult;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
@@ -20,6 +23,8 @@ import java.util.List;
 
 
 public class MainActivity extends Activity {
+
+  public final static String BEAST_ITEM = "com.mysticwater.thewitcher3bestiary.BEASTITEM";
 
   ExpandableListAdapter listAdapter;
   ExpandableListView expandableListView;
@@ -74,19 +79,21 @@ public class MainActivity extends Activity {
       @Override
       public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
                                   int childPosition, long id) {
+
+        String beast = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
+
         Toast.makeText(
           getApplicationContext(),
           listDataHeader.get(groupPosition)
             + " : "
-            + listDataChild.get(
-            listDataHeader.get(groupPosition))
-            .get(childPosition), Toast.LENGTH_SHORT)
+            + beast, Toast.LENGTH_SHORT)
           .show();
+
+        openItem(v, beast);
+
         return false;
       }
     });
-
-
   }
 
   @Override
@@ -141,7 +148,8 @@ public class MainActivity extends Activity {
     }
 
     List<String> draconidsList = new ArrayList<String>();
-    String[] draconids = {"Dragon"};
+    Resources res = getResources();
+    String[] draconids = res.getStringArray(R.array.draconids);
     for (String s : draconids) {
       draconidsList.add(s);
     }
@@ -165,7 +173,7 @@ public class MainActivity extends Activity {
     }
 
     List<String> necrophagesList = new ArrayList<String>();
-    String[] necrophages = {"Necrophage"};
+    String[] necrophages = {getString(R.string.hello_world)};
     for (String s : necrophages) {
       necrophagesList.add(s);
     }
@@ -205,6 +213,15 @@ public class MainActivity extends Activity {
     listDataChild.put(listDataHeader.get(8), relictsList);
     listDataChild.put(listDataHeader.get(9), spectersList);
     listDataChild.put(listDataHeader.get(10), vampiresList);
+  }
+
+  /**
+   * Called when the user clicks an item in a list
+   */
+  public void openItem(View view, String beast) {
+    Intent intent = new Intent(this, BeastItemActivity.class);
+    intent.putExtra(BEAST_ITEM, beast);
+    startActivity(intent);
   }
 
 }
