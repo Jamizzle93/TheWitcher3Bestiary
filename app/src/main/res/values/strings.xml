@@ -5,4 +5,16 @@
 
     <string name="search">Search</string>
     <string name="button_send">Send</string>
+    <string name="title_activity_beast_item">BeastItemActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string-array
+        name="draconids">
+        <item>Dragon</item>
+        <item>Wyvern</item>
+        <item>Basilisk</item>
+        <item>Forktail</item>
+    </string-array>
+
 </resources>
