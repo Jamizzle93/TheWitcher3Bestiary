@@ -9,8 +9,10 @@
                 tools:context="com.mysticwater.thewitcher3bestiary.BeastItemActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:gravity="center"
         android:id="@+id/beastName"/>
 
 </RelativeLayout>

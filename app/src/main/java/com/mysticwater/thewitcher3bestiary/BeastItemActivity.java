@@ -1,6 +1,7 @@
 package com.mysticwater.thewitcher3bestiary;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,8 +18,13 @@ public class BeastItemActivity extends ActionBarActivity {
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
 
+
+
     TextView beastName = (TextView) findViewById(R.id.beastName);
     beastName.setText(message);
+
+    Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/morpheus.ttf");
+    beastName.setTypeface(typeFace);
   }
 
   @Override
