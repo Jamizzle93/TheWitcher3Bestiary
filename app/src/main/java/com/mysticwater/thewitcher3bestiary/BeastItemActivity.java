@@ -13,7 +13,7 @@ public class BeastItemActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    //setContentView(R.layout.activity_beast_item);
+    setContentView(R.layout.activity_beast_item);
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
 
