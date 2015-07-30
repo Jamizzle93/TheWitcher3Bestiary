@@ -3,13 +3,10 @@ package com.mysticwater.thewitcher3bestiary;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
@@ -17,6 +14,9 @@ import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
+import com.opencsv.CSVReader;
+
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
   ExpandableListView expandableListView;
   List<String> listDataHeader;
   HashMap<String, List<String>> listDataChild;
+  List<String> childList;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,9 @@ public class MainActivity extends Activity {
     //get the listview
     expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
 
-    //preparing list data
-    prepareListData();
+    createGroupList();
+
+    createCollections();
 
     listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
@@ -94,6 +96,21 @@ public class MainActivity extends Activity {
         return false;
       }
     });
+
+    String workingDir = System.getProperty("user.dir");
+    System.out.println("Current working directory : " + workingDir);
+
+    try {
+      CSVReader reader = new CSVReader(new FileReader(getFileStreamPath("beasts.csv")));
+      String[] nextLine;
+      while ((nextLine = reader.readNext()) != null) {
+        // nextLine[] is an array of values from the line
+        System.out.println(nextLine[0] + nextLine[1] + "etc...");
+      }
+    } catch (Exception e) {
+      System.out.println("CSV file cannot be found." + e);
+    }
+
   }
 
   @Override
@@ -118,11 +135,8 @@ public class MainActivity extends Activity {
     return super.onOptionsItemSelected(item);
   }
 
-  private void prepareListData() {
+  private void createGroupList() {
     listDataHeader = new ArrayList<String>();
-    listDataChild = new HashMap<String, List<String>>();
-
-    //Adding child data
     listDataHeader.add("Beasts");
     listDataHeader.add("Cursed Ones");
     listDataHeader.add("Draconids");
@@ -134,85 +148,58 @@ public class MainActivity extends Activity {
     listDataHeader.add("Relicts");
     listDataHeader.add("Specters");
     listDataHeader.add("Vampires");
+  }
 
-    List<String> beastList = new ArrayList<String>();
-    String[] beasts = {"Hello", "One", "Two"};
-    for (String s : beasts) {
-      beastList.add(s);
-    }
-
-    List<String> cursedOnesList = new ArrayList<String>();
-    String[] cursedOnes = {"Werewolf", "James", "Sam"};
-    for (String s : cursedOnes) {
-      cursedOnesList.add(s);
-    }
-
-    List<String> draconidsList = new ArrayList<String>();
+  private void createCollections() {
     Resources res = getResources();
+
+    String[] beasts = res.getStringArray(R.array.beasts);
+    String[] cursedOnes = res.getStringArray(R.array.cursedOnes);
     String[] draconids = res.getStringArray(R.array.draconids);
-    for (String s : draconids) {
-      draconidsList.add(s);
-    }
+    String[] elementa = res.getStringArray(R.array.elementa);
+    String[] hybrids = res.getStringArray(R.array.hybrids);
+    String[] insectoids = res.getStringArray(R.array.insectoids);
+    String[] necrophages = res.getStringArray(R.array.necrophages);
+    String[] ogroids = res.getStringArray(R.array.ogroids);
+    String[] relicts = res.getStringArray(R.array.relicts);
+    String[] specters = res.getStringArray(R.array.specters);
+    String[] vampires = res.getStringArray(R.array.vampires);
 
-    List<String> elementaList = new ArrayList<String>();
-    String[] elementa = {"Earth Golem"};
-    for (String s : elementa) {
-      elementaList.add(s);
-    }
+    listDataChild = new HashMap<String, List<String>>();
 
-    List<String> hybridsList = new ArrayList<String>();
-    String[] hybrids = {"Archgriffin", "Griffin"};
-    for (String s : hybrids) {
-      hybridsList.add(s);
+    for (String beast : listDataHeader) {
+      if (beast.equals("Beasts")) {
+        loadChild(beasts);
+      } else if (beast.equals("Cursed Ones")) {
+        loadChild(cursedOnes);
+      } else if (beast.equals("Draconids")) {
+        loadChild(draconids);
+      } else if (beast.equals("Elementa")) {
+        loadChild(elementa);
+      } else if (beast.equals("Hybrids")) {
+        loadChild(hybrids);
+      } else if (beast.equals("Insectoids")) {
+        loadChild(insectoids);
+      } else if (beast.equals("Necrophages")) {
+        loadChild(necrophages);
+      } else if (beast.equals("Ogroids")) {
+        loadChild(ogroids);
+      } else if (beast.equals("Relicts")) {
+        loadChild(relicts);
+      } else if (beast.equals("Specters")) {
+        loadChild(specters);
+      } else if (beast.equals("Vampires")) {
+        loadChild(vampires);
+      }
+      listDataChild.put(beast, childList);
     }
+  }
 
-    List<String> insectoidsList = new ArrayList<String>();
-    String[] insectoids = {"Giant Spider"};
-    for (String s : insectoids) {
-      insectoidsList.add(s);
+  private void loadChild(String[] beasts) {
+    childList = new ArrayList<String>();
+    for (String beast : beasts) {
+      childList.add(beast);
     }
-
-    List<String> necrophagesList = new ArrayList<String>();
-    String[] necrophages = {getString(R.string.hello_world)};
-    for (String s : necrophages) {
-      necrophagesList.add(s);
-    }
-
-    List<String> ogroidsList = new ArrayList<String>();
-    String[] ogroids = {"Rock Troll"};
-    for (String s : ogroids) {
-      ogroidsList.add(s);
-    }
-
-    List<String> relictsList = new ArrayList<String>();
-    String[] relicts = {"Leshen"};
-    for (String s : relicts) {
-      relictsList.add(s);
-    }
-
-    List<String> spectersList = new ArrayList<String>();
-    String[] specters = {"Wraith", "Noonwraith"};
-    for (String s : specters) {
-      spectersList.add(s);
-    }
-
-    List<String> vampiresList = new ArrayList<String>();
-    String[] vampires = {"Enchinda", "Vampire"};
-    for (String s : vampires) {
-      vampiresList.add(s);
-    }
-
-    listDataChild.put(listDataHeader.get(0), beastList);
-    listDataChild.put(listDataHeader.get(1), cursedOnesList);
-    listDataChild.put(listDataHeader.get(2), draconidsList);
-    listDataChild.put(listDataHeader.get(3), elementaList);
-    listDataChild.put(listDataHeader.get(4), hybridsList);
-    listDataChild.put(listDataHeader.get(5), insectoidsList);
-    listDataChild.put(listDataHeader.get(6), necrophagesList);
-    listDataChild.put(listDataHeader.get(7), ogroidsList);
-    listDataChild.put(listDataHeader.get(8), relictsList);
-    listDataChild.put(listDataHeader.get(9), spectersList);
-    listDataChild.put(listDataHeader.get(10), vampiresList);
   }
 
   /**
