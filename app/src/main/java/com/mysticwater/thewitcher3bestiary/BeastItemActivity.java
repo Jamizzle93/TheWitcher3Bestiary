@@ -17,10 +17,8 @@ public class BeastItemActivity extends ActionBarActivity {
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
 
-    TextView textView = new TextView(this);
-    textView.setTextSize(40);
-    textView.setText(message);
-    setContentView(textView);
+    TextView beastName = (TextView) findViewById(R.id.beastName);
+    beastName.setText(message);
   }
 
   @Override
