@@ -7,14 +7,104 @@
     <string name="button_send">Send</string>
     <string name="title_activity_beast_item">BeastItemActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string-array
+        name="beasts">
+        <item>Bears</item>
+        <item>Dogs</item>
+        <item>Wolves</item>
+    </string-array>
+
+    <string-array
+        name="cursedOnes">
+        <item>Berserkers</item>
+        <item>Botchlings</item>
+        <item>Ulfhedinn</item>
+        <item>Werewolves</item>
+    </string-array>
 
     <string-array
         name="draconids">
-        <item>Dragon</item>
-        <item>Wyvern</item>
-        <item>Basilisk</item>
-        <item>Forktail</item>
+        <item>Basilisks</item>
+        <item>Cockatrices</item>
+        <item>Forktails</item>
+        <item>Wyverns</item>
+    </string-array>
+
+    <string-array
+        name="elementa">
+        <item>Djinns</item>
+        <item>Earth Elementals</item>
+        <item>Fire Elementals</item>
+        <item>Gargoyles</item>
+        <item>Golems</item>
+        <item>Hounds of the Wild Hunt</item>
+        <item>Ice Elementals</item>
+    </string-array>
+
+    <string-array
+        name="hybrids">
+        <item>Erynias</item>
+        <item>Griffins</item>
+        <item>Harpies</item>
+        <item>Sirens</item>
+        <item>Succubi</item>
+    </string-array>
+
+    <string-array
+        name="insectoids">
+        <item>Arachasae</item>
+        <item>Armored Arachasae</item>
+        <item>Endrega drones</item>
+        <item>Endrega warriors</item>
+        <item>Endrega workers</item>
+        <item>Endrega Arachasae</item>
+    </string-array>
+
+    <string-array
+        name="necrophages">
+        <item>Alghouls</item>
+        <item>Drowners</item>
+        <item>Foglets</item>
+        <item>Ghouls</item>
+        <item>Grave hags</item>
+        <item>Rotfiends</item>
+        <item>Water hags</item>
+    </string-array>
+
+    <string-array
+        name="ogroids">
+        <item>Cyclopses</item>
+        <item>Ice Giants</item>
+        <item>Ice trolls</item>
+        <item>Nekkers</item>
+        <item>Rock trolls</item>
+#    </string-array>
+
+    <string-array
+        name="relicts">
+        <item>Chorts</item>
+        <item>Crones</item>
+        <item>Fiends</item>
+        <item>Godlings</item>
+        <item>Leshens</item>
+        <item>Sylvans</item>
+    </string-array>
+
+    <string-array
+        name="specters">
+        <item>Hyms</item>
+        <item>Crones</item>
+        <item>Nightwraiths</item>
+        <item>Noonwraiths</item>
+        <item>Plague Maidens</item>
+        <item>Wraiths</item>
+    </string-array>
+
+    <string-array
+        name="vampires">
+        <item>Ekimmaras</item>
+        <item>Higher Vampires</item>
+        <item>Katakans</item>
     </string-array>
 
 </resources>
