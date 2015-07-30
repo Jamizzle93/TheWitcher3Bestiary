@@ -14,8 +14,6 @@ import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
-import com.opencsv.CSVReader;
-
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,21 +94,6 @@ public class MainActivity extends Activity {
         return false;
       }
     });
-
-    String workingDir = System.getProperty("user.dir");
-    System.out.println("Current working directory : " + workingDir);
-
-    try {
-      CSVReader reader = new CSVReader(new FileReader(getFileStreamPath("beasts.csv")));
-      String[] nextLine;
-      while ((nextLine = reader.readNext()) != null) {
-        // nextLine[] is an array of values from the line
-        System.out.println(nextLine[0] + nextLine[1] + "etc...");
-      }
-    } catch (Exception e) {
-      System.out.println("CSV file cannot be found." + e);
-    }
-
   }
 
   @Override
