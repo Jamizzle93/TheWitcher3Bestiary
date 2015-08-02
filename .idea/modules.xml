@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TheWitcher3Bestiary.iml" filepath="$PROJECT_DIR$/TheWitcher3Bestiary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thewitcher3bestiary.iml" filepath="$PROJECT_DIR$/thewitcher3bestiary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thewitcher3bestiary.iml" filepath="$PROJECT_DIR$/thewitcher3bestiary.iml" />
     </modules>
   </component>
 </project>

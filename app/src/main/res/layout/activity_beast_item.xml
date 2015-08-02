@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="40sp"
         android:gravity="center"
-        android:id="@+id/beastName"/>
+        android:id="@+id/beastName"
+        android:text="Beast" />
 
 </RelativeLayout>
