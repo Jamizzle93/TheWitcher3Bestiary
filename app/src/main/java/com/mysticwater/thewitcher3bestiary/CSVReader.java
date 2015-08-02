@@ -28,7 +28,7 @@ public class CSVReader {
         results.add(row);
       }
     } catch(IOException ex) {
-      throw new new Runtime("Error in reading CSV file: " + ex);
+      throw new RuntimeException("Error in reading CSV file: " + ex);
     } finally {
       try {
         inputStream.close();
