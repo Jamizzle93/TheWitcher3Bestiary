@@ -24,24 +24,21 @@ public class BeastItemActivity extends ActionBarActivity {
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
 
-    String s = readFromDatabase(message);
-
-    System.out.println("READING FROM DATABASE!");
-    System.out.println("DATABASE TO STRING " + s);
+    String[] beastData = readFromDatabase(message);
 
     TextView beastName = (TextView) findViewById(R.id.beastName);
-    beastName.setText(message);
+    beastName.setText(beastData[0]);
 
-    Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/morpheus.ttf");
+    Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
     beastName.setTypeface(typeFace);
   }
 
-  private String readFromDatabase(String beastName) {
+  private String[] readFromDatabase(String beastName) {
     BeastsDbHelper mDbHelper = new BeastsDbHelper(getBaseContext());
 
     SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-    String str = "";
+    String[] beastData = new String[3];
 
     String[] projection = {
       BeastEntry.COLUMN_NAME_TYPE,
@@ -63,13 +60,13 @@ public class BeastItemActivity extends ActionBarActivity {
     );
 
     if (c != null) {
-      if (c.moveToFirst())
-      {
-        System.out.println("Column count " + c.getColumnCount());
-        str = c.getString(c.getColumnIndex("beast"));
+      if (c.moveToFirst()) {
+        beastData[0] = (c.getString(c.getColumnIndex("beast")));
+        beastData[1] = (c.getString(c.getColumnIndex("type")));
+        beastData[2] = (c.getString(c.getColumnIndex("vulnerabilities")));
       }
     }
-    return str;
+    return beastData;
   }
 
   @Override
