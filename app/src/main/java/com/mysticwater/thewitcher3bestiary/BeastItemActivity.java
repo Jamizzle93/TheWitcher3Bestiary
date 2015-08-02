@@ -1,15 +1,23 @@
 package com.mysticwater.thewitcher3bestiary;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.lang.reflect.Method;
 import java.sql.SQLOutput;
 
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.*;
@@ -27,10 +35,32 @@ public class BeastItemActivity extends ActionBarActivity {
     String[] beastData = readFromDatabase(message);
 
     TextView beastName = (TextView) findViewById(R.id.beastName);
+    TextView beastType = (TextView) findViewById(R.id.typeValue);
+
     beastName.setText(beastData[0]);
+    beastType.setText(beastData[1]);
+
+    String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
 
     Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
     beastName.setTypeface(typeFace);
+    beastType.setTypeface(typeFace);
+
+    TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
+    for (String v : vulnerabilities) {
+      TableRow tr = new TableRow(this);
+      tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+      TextView vulnerability = new TextView(this);
+      vulnerability.setText(v);
+      vulnerability.setTypeface(typeFace);
+      tr.addView(vulnerability);
+      tl.addView(tr);
+    }
+  }
+
+  private String[] retrieveVulnerabilities(String s) {
+    String[] splitArray = s.split("\\. ");
+    return splitArray;
   }
 
   private String[] readFromDatabase(String beastName) {
@@ -82,6 +112,26 @@ public class BeastItemActivity extends ActionBarActivity {
     }
 
     return super.onOptionsItemSelected(item);
+  }
+
+  /**
+   * Method taken from http://stackoverflow.com/questions/10766716/set-font-for-all-textviews-in-activity
+   */
+  private void overrideFonts(final Context context, final View v) {
+    try {
+      if (v instanceof ViewGroup) {
+        ViewGroup vg = (ViewGroup) v;
+        for (int i = 0; i < vg.getChildCount(); i++) {
+          View child = vg.getChildAt(i);
+          overrideFonts(context, child);
+        }
+      } else if (v instanceof TextView) {
+        ((TextView) v).setTypeface(Typeface.createFromAsset(context.getAssets(), "font.ttf"));
+      }
+    } catch (Exception e)
+    {
+      throw new RuntimeException("Failed to overrideFonts");
+    }
   }
 
 
