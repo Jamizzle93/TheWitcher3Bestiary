@@ -46,7 +46,6 @@ public class MainActivity extends Activity {
 
     createGroupList();
     createCollections();
-    createDatabase();
     createDatabaseFromCsv();
 
     listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
@@ -54,33 +53,7 @@ public class MainActivity extends Activity {
     //setting list adapter
     expandableListView.setAdapter(listAdapter);
 
-    expandableListView.setOnGroupClickListener(new OnGroupClickListener() {
-      @Override
-      public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-        Toast.makeText(getApplicationContext(),
-          "Group Clicked " + listDataHeader.get(groupPosition),
-          Toast.LENGTH_SHORT).show();
-        return false;
-      }
-    });
 
-    expandableListView.setOnGroupExpandListener(new OnGroupExpandListener() {
-      @Override
-      public void onGroupExpand(int groupPosition) {
-        Toast.makeText(getApplicationContext(),
-          listDataHeader.get(groupPosition) + " Expanded",
-          Toast.LENGTH_SHORT).show();
-      }
-    });
-
-    expandableListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
-      @Override
-      public void onGroupCollapse(int groupPosition) {
-        Toast.makeText(getApplicationContext(),
-          listDataHeader.get(groupPosition) + " Collapsed",
-          Toast.LENGTH_SHORT).show();
-      }
-    });
 
     expandableListView.setOnChildClickListener(new OnChildClickListener() {
       @Override
@@ -88,14 +61,6 @@ public class MainActivity extends Activity {
                                   int childPosition, long id) {
 
         String beast = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
-
-        Toast.makeText(
-          getApplicationContext(),
-          listDataHeader.get(groupPosition)
-            + " : "
-            + beast, Toast.LENGTH_SHORT)
-          .show();
-
         openItem(v, beast);
 
         return false;
@@ -124,75 +89,6 @@ public class MainActivity extends Activity {
         values
       );
     }
-  }
-
-  private void createDatabase() {
-    BeastsDbHelper mDbHelper = new BeastsDbHelper(getBaseContext());
-
-    SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-    ContentValues values = new ContentValues();
-
-    Resources res = getResources();
-    String[] beasts = res.getStringArray(R.array.beasts);
-    String[] cursedOnes = res.getStringArray(R.array.cursedOnes);
-    String[] draconids = res.getStringArray(R.array.draconids);
-    String[] elementa = res.getStringArray(R.array.elementa);
-    String[] hybrids = res.getStringArray(R.array.hybrids);
-    String[] insectoids = res.getStringArray(R.array.insectoids);
-    String[] necrophages = res.getStringArray(R.array.necrophages);
-    String[] ogroids = res.getStringArray(R.array.ogroids);
-    String[] relicts = res.getStringArray(R.array.relicts);
-    String[] specters = res.getStringArray(R.array.specters);
-    String[] vampires = res.getStringArray(R.array.vampires);
-
-//    for (String beastType : listDataHeader) {
-//      if (beastType.equals("Beasts")) {
-//        for (String beast : beasts) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Cursed Ones")) {
-//        for (String beast : cursedOnes) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Draconids")) {
-//        for (String beast : draconids) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Elementa")) {
-//        for (String beast : elementa) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Hybrids")) {
-//        for (String beast : hybrids) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Insectoids")) {
-//        for (String beast : insectoids) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Necrophages")) {
-//        for (String beast : necrophages) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Ogroids")) {
-//        for (String beast : ogroids) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Relicts")) {
-//        for (String beast : relicts) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Specters")) {
-//        for (String beast : specters) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      } else if (beastType.equals("Vampires")) {
-//        for (String beast : vampires) {
-//          System.out.println(beastType + " ," + beast);
-//        }
-//      }
-//    }
   }
 
   @Override
