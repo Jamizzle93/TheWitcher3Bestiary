@@ -26,7 +26,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/beastName"
         android:text="Type: "
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/vulnerabilitiesLabel"
@@ -36,7 +37,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/typeLabel"
         android:text="Vulnerabilities: "
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/typeValue"

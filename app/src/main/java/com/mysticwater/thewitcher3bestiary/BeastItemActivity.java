@@ -35,16 +35,23 @@ public class BeastItemActivity extends ActionBarActivity {
     String[] beastData = readFromDatabase(message);
 
     TextView beastName = (TextView) findViewById(R.id.beastName);
+
+    TextView typeLabel = (TextView) findViewById(R.id.typeLabel);
     TextView beastType = (TextView) findViewById(R.id.typeValue);
 
     beastName.setText(beastData[0]);
     beastType.setText(beastData[1]);
 
+    TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
 
-    Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
-    beastName.setTypeface(typeFace);
-    beastType.setTypeface(typeFace);
+    Typeface titleType = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
+    Typeface bodyType = Typeface.createFromAsset(getAssets(), "fonts/PFDinThin.ttf");
+
+    beastName.setTypeface(titleType);
+    beastType.setTypeface(bodyType);
+    typeLabel.setTypeface(bodyType);
+    vulnerabilitiesLabel.setTypeface(bodyType);
 
     TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
     for (String v : vulnerabilities) {
@@ -52,7 +59,7 @@ public class BeastItemActivity extends ActionBarActivity {
       tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
       TextView vulnerability = new TextView(this);
       vulnerability.setText(v);
-      vulnerability.setTypeface(typeFace);
+      vulnerability.setTypeface(bodyType);
       tr.addView(vulnerability);
       tl.addView(tr);
     }
