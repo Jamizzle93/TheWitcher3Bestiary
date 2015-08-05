@@ -72,7 +72,9 @@ public class BeastItemActivity extends ActionBarActivity {
       tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
       TextView vulnerability = new TextView(this);
       vulnerability.setText(v);
+      vulnerability.setTextColor(getResources().getColor(R.color.orange));
       vulnerability.setTypeface(bodyType);
+      vulnerability.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
       tr.addView(vulnerability);
       tl.addView(tr);
     }
