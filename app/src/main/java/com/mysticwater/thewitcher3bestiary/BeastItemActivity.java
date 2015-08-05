@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -28,6 +32,8 @@ public class BeastItemActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    ActionBar actionBar = getSupportActionBar();
+    actionBar.hide();
     setContentView(R.layout.activity_beast_item);
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
@@ -35,12 +41,20 @@ public class BeastItemActivity extends ActionBarActivity {
     String[] beastData = readFromDatabase(message);
 
     TextView beastName = (TextView) findViewById(R.id.beastName);
-
-    TextView typeLabel = (TextView) findViewById(R.id.typeLabel);
     TextView beastType = (TextView) findViewById(R.id.typeValue);
+    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
 
-    beastName.setText(beastData[0]);
-    beastType.setText(beastData[1]);
+    beastName.setText(beastData[0].toUpperCase());
+    beastType.setText(beastData[1].toUpperCase());
+
+    int res = getResources().getIdentifier(convertBeastName(beastData[0]), "drawable", this.getPackageName());
+    if(res == 0)
+    {
+      res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
+    }
+    System.out.println("Res: " + res);
+    System.out.println("Beast name: " + convertBeastName(beastData[0]));
+    beastImage.setImageResource(res);
 
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
@@ -50,7 +64,6 @@ public class BeastItemActivity extends ActionBarActivity {
 
     beastName.setTypeface(titleType);
     beastType.setTypeface(bodyType);
-    typeLabel.setTypeface(bodyType);
     vulnerabilitiesLabel.setTypeface(bodyType);
 
     TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
@@ -63,6 +76,10 @@ public class BeastItemActivity extends ActionBarActivity {
       tr.addView(vulnerability);
       tl.addView(tr);
     }
+  }
+
+  private String convertBeastName(String s) {
+    return s.replaceAll("\\s+","").toLowerCase();
   }
 
   private String[] retrieveVulnerabilities(String s) {
@@ -135,8 +152,7 @@ public class BeastItemActivity extends ActionBarActivity {
       } else if (v instanceof TextView) {
         ((TextView) v).setTypeface(Typeface.createFromAsset(context.getAssets(), "font.ttf"));
       }
-    } catch (Exception e)
-    {
+    } catch (Exception e) {
       throw new RuntimeException("Failed to overrideFonts");
     }
   }
