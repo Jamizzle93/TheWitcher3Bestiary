@@ -1,6 +1,7 @@
 package com.mysticwater.thewitcher3bestiary;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +22,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
   private Context _context;
   private List<String> _listDataHeader;
   private HashMap<String, List<String>> _listDataChild;
+  Typeface bodyType;
 
   public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                HashMap<String, List<String>> listDataChild) {
     this._context = context;
     this._listDataHeader = listDataHeader;
     this._listDataChild = listDataChild;
+    bodyType = Typeface.createFromAsset(_context.getAssets(), "fonts/PFDinThin.ttf");
   }
 
   @Override
@@ -48,6 +51,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
       convertView = infalInflater.inflate(R.layout.list_item, null);
     }
     TextView txtListChild = (TextView) convertView.findViewById(R.id.beastListItem);
+
+    txtListChild.setTypeface(bodyType);
+
     txtListChild.setText(childText);
     return convertView;
   }
@@ -81,7 +87,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     TextView beastListHeader = (TextView) convertView.findViewById(R.id.beastListHeader);
-    beastListHeader.setTypeface(null, Typeface.BOLD);
+    beastListHeader.setTypeface(bodyType);
     beastListHeader.setText(headerTitle);
 
     return convertView;

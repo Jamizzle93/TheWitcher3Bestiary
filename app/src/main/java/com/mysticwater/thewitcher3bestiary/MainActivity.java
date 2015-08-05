@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
@@ -54,6 +56,16 @@ public class MainActivity extends Activity {
     expandableListView.setAdapter(listAdapter);
 
 
+    expandableListView.setOnGroupExpandListener(new OnGroupExpandListener() {
+      int previousGroup = -1;
+
+      @Override
+      public void onGroupExpand(int groupPosition) {
+        if (groupPosition != previousGroup)
+          expandableListView.collapseGroup(previousGroup);
+        previousGroup = groupPosition;
+      }
+    });
 
     expandableListView.setOnChildClickListener(new OnChildClickListener() {
       @Override
