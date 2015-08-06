@@ -6,6 +6,7 @@
     <string name="search">Search</string>
     <string name="button_send">Send</string>
     <string name="title_activity_beast_item">BeastItemActivity</string>
+    <string name="appHeading">THE WITCHER 3 BESTIARY</string>
 
     <string-array
         name="beasts">
