@@ -12,7 +12,10 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="20sp"
+        android:fadingEdge="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
