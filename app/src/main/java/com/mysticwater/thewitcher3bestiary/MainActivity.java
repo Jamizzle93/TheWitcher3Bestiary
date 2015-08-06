@@ -42,7 +42,9 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-
+    TextView heading = (TextView) findViewById(R.id.listHeading);
+    Typeface titleType = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
+    heading.setTypeface(titleType);
     //get the listview
     expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
 

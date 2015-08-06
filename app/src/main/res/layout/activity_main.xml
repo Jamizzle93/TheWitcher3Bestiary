@@ -10,12 +10,21 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appHeading"
+            android:textSize="25sp"
+            android:id="@+id/listHeading"
+            android:layout_gravity="center"
+            android:textColor="@color/orange"/>
+
+        <ExpandableListView
+            android:id="@+id/beastListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
-
-    <ExpandableListView
-        android:id="@+id/beastListView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-
 </LinearLayout>
