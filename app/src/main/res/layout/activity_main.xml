@@ -21,6 +21,11 @@
             android:layout_gravity="center"
             android:textColor="@color/orange"/>
 
+        <SearchView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchView"/>
+
         <ExpandableListView
             android:id="@+id/beastListView"
             android:layout_width="wrap_content"
