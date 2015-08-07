@@ -71,10 +71,20 @@ public class BeastItemActivity extends ActionBarActivity {
       TableRow tr = new TableRow(this);
       tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
       TextView vulnerability = new TextView(this);
+
+      vulnerability.setPadding(25, 0, 0, 0);
+
       vulnerability.setText(v);
       vulnerability.setTextColor(getResources().getColor(R.color.orange));
       vulnerability.setTypeface(bodyType);
       vulnerability.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
+      int imageRes = getResources().getIdentifier(convertBeastName(v), "drawable", this.getPackageName());
+      ImageView vulnerabilityImage = new ImageView(this);
+      vulnerabilityImage.setPadding(0, 0, 0, 25);
+      vulnerabilityImage.setImageResource(imageRes);
+      vulnerabilityImage.requestLayout();
+
+      tr.addView(vulnerabilityImage);
       tr.addView(vulnerability);
       tl.addView(tr);
     }

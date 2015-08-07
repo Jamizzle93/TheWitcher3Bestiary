@@ -9,10 +9,10 @@
         android:id="@+id/beastListHeader"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/orange"
+        android:textAllCaps="true"
+        android:textColor="@color/item_selected_selector"
         android:textSize="32dp"
         android:textStyle="bold"
-        android:textAllCaps="true"
         />
 
 </LinearLayout>

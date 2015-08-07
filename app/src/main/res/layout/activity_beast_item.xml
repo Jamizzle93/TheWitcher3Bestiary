@@ -13,66 +13,66 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:requiresFadingEdge="vertical"
+        android:fadingEdge="vertical"
         android:fadingEdgeLength="20sp"
-        android:fadingEdge="vertical">
+        android:requiresFadingEdge="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-    <TextView
-        android:id="@+id/beastName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Beast"
-        android:textAlignment="center"
-        android:textColor="@color/orange"
-        android:textSize="50sp"/>
+            <com.mysticwater.thewitcher3bestiary.AutoResizeTextView
+                android:id="@+id/beastName"
+                android:layout_width="fill_parent"
+                android:layout_height="55sp"
+                android:gravity="center"
+                android:text="Beast"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textSize="55sp"/>
 
-    <TextView
-        android:id="@+id/typeValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/beastName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
-        android:gravity="center"
-        android:text="type"
-        android:textAlignment="center"
-        android:textColor="@color/orange"
-        android:textSize="32sp"/>
+            <TextView
+                android:id="@+id/typeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/beastName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20sp"
+                android:gravity="center"
+                android:text="type"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textSize="32sp"/>
 
-    <ImageView
-        android:id="@+id/beastImage"
-        android:layout_width="206sp"
-        android:layout_height="206sp"
-        android:layout_below="@+id/typeValue"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"/>
+            <ImageView
+                android:id="@+id/beastImage"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_below="@+id/typeValue"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20sp"/>
 
-    <TextView
-        android:id="@+id/vulnerabilitiesLabel"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/beastImage"
-        android:layout_marginTop="25sp"
-        android:gravity="center"
-        android:text="VULNERABLE AGAINST:"
-        android:textAlignment="center"
-        android:textColor="@color/orange"
-        android:textSize="26sp"/>
+            <TextView
+                android:id="@+id/vulnerabilitiesLabel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/beastImage"
+                android:layout_marginTop="25sp"
+                android:gravity="center"
+                android:text="VULNERABLE AGAINST:"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textSize="26sp"/>
 
-    <TableLayout
-        android:id="@+id/TableLayout01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/vulnerabilitiesLabel"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"/>
+            <TableLayout
+                android:id="@+id/TableLayout01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/vulnerabilitiesLabel"
+                android:layout_marginLeft="21dp"
+                android:layout_marginStart="21dp"/>
 
         </RelativeLayout>
 
