@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -53,6 +54,8 @@ public class MainActivity extends Activity {
     createGroupList();
     createCollections();
     createDatabaseFromCsv();
+
+    processHeaders();
 
     listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
@@ -202,6 +205,29 @@ public class MainActivity extends Activity {
     Intent intent = new Intent(this, BeastItemActivity.class);
     intent.putExtra(BEAST_ITEM, beast);
     startActivity(intent);
+  }
+
+  private void processHeaders() {
+    BeastsDbHelper mDbHelper = new BeastsDbHelper(getBaseContext());
+    SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+    String query = "select * from " + BeastEntry.TABLE_NAME;
+    System.out.println("Query: " + query);
+    Cursor c = db.rawQuery(query, null);
+
+    listDataHeader = new ArrayList<String>();
+    listDataChild = new HashMap<String, List<String>>();
+
+    if (c.moveToFirst()) {
+      while (!c.isAfterLast()) {
+        String type = c.getString(c.getColumnIndex(BeastEntry.COLUMN_NAME_TYPE));
+
+        //Build Headers
+        if (!(listDataHeader.contains(type))) {
+          listDataHeader.add(type);
+        }
+      }
+    }
   }
 
 }
