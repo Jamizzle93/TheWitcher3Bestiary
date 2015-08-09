@@ -83,6 +83,8 @@ public class BeastItemActivity extends ActionBarActivity {
 
       vulnerability.setPadding(25, 0, 0, 0);
 
+      System.out.println(convertBeastName(v));
+
       vulnerability.setText(v);
       vulnerability.setTextColor(getResources().getColor(R.color.orange));
       vulnerability.setTypeface(bodyType);
@@ -100,7 +102,7 @@ public class BeastItemActivity extends ActionBarActivity {
   }
 
   private String convertBeastName(String s) {
-    return s.replaceAll("\\s+", "").toLowerCase();
+    return s.replaceAll("\\s+", "").replaceAll("\'", "").toLowerCase();
   }
 
   private String[] retrieveVulnerabilities(String s) {
