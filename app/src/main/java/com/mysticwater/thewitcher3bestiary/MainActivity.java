@@ -59,8 +59,6 @@ public class MainActivity extends Activity {
     //setting list adapter
     expandableListView.setAdapter(listAdapter);
 
-    search = (EditText) findViewById(R.id.search);
-
     expandableListView.setOnGroupExpandListener(new OnGroupExpandListener() {
       int previousGroup = -1;
 
