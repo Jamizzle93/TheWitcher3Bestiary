@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
   List<String> listDataHeader;
   HashMap<String, List<String>> listDataChild;
   List<String> childList;
+  EditText search;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class MainActivity extends Activity {
     //setting list adapter
     expandableListView.setAdapter(listAdapter);
 
+    search = (EditText) findViewById(R.id.search);
 
     expandableListView.setOnGroupExpandListener(new OnGroupExpandListener() {
       int previousGroup = -1;

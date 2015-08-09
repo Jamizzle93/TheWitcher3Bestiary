@@ -21,10 +21,12 @@
             android:layout_gravity="center"
             android:textColor="@color/orange"/>
 
-        <SearchView
+        <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/searchView"/>
+            android:textSize="15sp"
+            android:id="@+id/search"
+            android:textColor="@color/orange"/>
 
         <ExpandableListView
             android:id="@+id/beastListView"

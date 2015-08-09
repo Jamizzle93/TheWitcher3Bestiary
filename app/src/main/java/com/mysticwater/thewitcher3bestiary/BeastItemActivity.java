@@ -36,12 +36,14 @@ public class BeastItemActivity extends ActionBarActivity {
     super.onCreate(savedInstanceState);
 
     CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-        .setDefaultFontPath("fonts/PFDinThin.ttf")
-        .setFontAttrId(R.attr.fontPath)
-        .build());
+      .setDefaultFontPath("fonts/PFDinThin.ttf")
+      .setFontAttrId(R.attr.fontPath)
+      .build());
 
     ActionBar actionBar = getSupportActionBar();
-    actionBar.hide();
+    if (actionBar != null) {
+      actionBar.hide();
+    }
     setContentView(R.layout.activity_beast_item);
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
@@ -56,8 +58,7 @@ public class BeastItemActivity extends ActionBarActivity {
     beastType.setText(beastData[1].toUpperCase());
 
     int res = getResources().getIdentifier(convertBeastName(beastData[0]), "drawable", this.getPackageName());
-    if(res == 0)
-    {
+    if (res == 0) {
       res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
     }
     System.out.println("Res: " + res);
@@ -99,7 +100,7 @@ public class BeastItemActivity extends ActionBarActivity {
   }
 
   private String convertBeastName(String s) {
-    return s.replaceAll("\\s+","").toLowerCase();
+    return s.replaceAll("\\s+", "").toLowerCase();
   }
 
   private String[] retrieveVulnerabilities(String s) {
