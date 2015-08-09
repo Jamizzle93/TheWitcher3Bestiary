@@ -50,7 +50,7 @@ public class BeastItemActivity extends ActionBarActivity {
 
     String[] beastData = readFromDatabase(message);
 
-    TextView beastName = (TextView) findViewById(R.id.beastName);
+    AutoResizeTextView beastName = (AutoResizeTextView) findViewById(R.id.beastName);
     TextView beastType = (TextView) findViewById(R.id.typeValue);
     ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
 

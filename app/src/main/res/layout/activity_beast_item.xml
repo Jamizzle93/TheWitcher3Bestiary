@@ -24,7 +24,7 @@
             <com.mysticwater.thewitcher3bestiary.AutoResizeTextView
                 android:id="@+id/beastName"
                 android:layout_width="fill_parent"
-                android:layout_height="55sp"
+                android:layout_height="55dp"
                 android:gravity="center"
                 android:text="Beast"
                 android:textAlignment="center"
