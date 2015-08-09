@@ -24,6 +24,8 @@ import android.widget.TextView;
 import java.lang.reflect.Method;
 import java.sql.SQLOutput;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.*;
 
 
@@ -32,6 +34,12 @@ public class BeastItemActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+        .setDefaultFontPath("fonts/PFDinThin.ttf")
+        .setFontAttrId(R.attr.fontPath)
+        .build());
+
     ActionBar actionBar = getSupportActionBar();
     actionBar.hide();
     setContentView(R.layout.activity_beast_item);
