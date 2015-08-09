@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class SplashScreen extends Activity {
 
-  private final int SPLASH_DISPLAY_LENGTH = 5000;
+  private final int SPLASH_DISPLAY_LENGTH = 2500;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
