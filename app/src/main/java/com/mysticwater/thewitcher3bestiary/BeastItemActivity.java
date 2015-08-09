@@ -61,8 +61,6 @@ public class BeastItemActivity extends ActionBarActivity {
     if (res == 0) {
       res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
     }
-    System.out.println("Res: " + res);
-    System.out.println("Beast name: " + convertBeastName(beastData[0]));
     beastImage.setImageResource(res);
 
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);

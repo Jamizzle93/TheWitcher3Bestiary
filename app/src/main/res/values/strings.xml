@@ -106,5 +106,8 @@
         <item>Higher Vampire</item>
         <item>Katakan</item>
     </string-array>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
