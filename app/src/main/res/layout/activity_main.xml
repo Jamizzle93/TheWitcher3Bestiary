@@ -20,15 +20,22 @@
             android:id="@+id/listHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:text="@string/appHeading"
+            android:textAlignment="center"
             android:textColor="@color/orange"
-            android:textSize="25sp"/>
+            android:textSize="35sp"/>
+
 
         <ExpandableListView
             android:id="@+id/beastListView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="20sp"
+            android:requiresFadingEdge="vertical"/>
+
     </LinearLayout>
+
 </LinearLayout>
