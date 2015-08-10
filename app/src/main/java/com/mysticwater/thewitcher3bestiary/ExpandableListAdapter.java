@@ -80,7 +80,7 @@ class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     TextView beastListHeader = (TextView) convertView.findViewById(R.id.beastListHeader);
-    beastListHeader.setTypeface(bodyType);
+    beastListHeader.setTypeface(bodyType, Typeface.BOLD);
     beastListHeader.setText(headerTitle);
 
     return convertView;

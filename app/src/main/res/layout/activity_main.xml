@@ -15,16 +15,15 @@
         android:orientation="vertical">
 
 
-        <TextView
+        <com.mysticwater.thewitcher3bestiary.AutoResizeTextView
             android:id="@+id/listHeading"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/appHeading"
             android:textAlignment="center"
             android:textColor="@color/orange"
             android:textSize="35sp"/>
-
 
         <ExpandableListView
             android:id="@+id/beastListView"

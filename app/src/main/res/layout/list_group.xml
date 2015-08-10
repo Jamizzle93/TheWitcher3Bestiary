@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textColor="@color/item_selected_selector"
-        android:textSize="32dp"
-        android:textStyle="bold"
+        android:textSize="32sp"
         />
 
 </LinearLayout>

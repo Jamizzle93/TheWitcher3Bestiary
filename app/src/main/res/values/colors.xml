@@ -4,11 +4,13 @@
     <item name="darkgrey" type="color">#040404</item>
     <item name="orange" type="color">#ba9a5f</item>
     <item name="white" type="color">#ffffff</item>
+    <item name="darkorange" type="color">#865c39</item>
 
     <integer-array name="androidcolors">
         <item>@color/darkgrey</item>
         <item>@color/orange</item>
         <item>@color/white</item>
+        <item>@color/darkorange</item>
     </integer-array>
 
 </resources> 

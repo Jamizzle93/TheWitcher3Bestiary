@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,8 +44,9 @@ public class MainActivity extends Activity {
     processHeaders();
 
     //Set font for heading
-    TextView heading = (TextView) findViewById(R.id.listHeading);
+    AutoResizeTextView heading = (AutoResizeTextView) findViewById(R.id.listHeading);
     setFont(heading, "morpheus.ttf");
+    heading.setPaintFlags(heading.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
     expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
     ExpandableListAdapter listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
@@ -78,7 +80,7 @@ public class MainActivity extends Activity {
 
   private void setFont(TextView textView, String font) {
     Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
-    textView.setTypeface(type);
+    textView.setTypeface(type, Typeface.BOLD);
   }
 
   private void processHeaders() {
