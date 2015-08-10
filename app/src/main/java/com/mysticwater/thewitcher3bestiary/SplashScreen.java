@@ -2,13 +2,9 @@ package com.mysticwater.thewitcher3bestiary;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class SplashScreen extends Activity {
 
@@ -34,7 +30,6 @@ public class SplashScreen extends Activity {
       }
     }, SPLASH_DISPLAY_LENGTH);
   }
-
 
 
 }

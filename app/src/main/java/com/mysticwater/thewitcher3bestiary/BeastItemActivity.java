@@ -1,17 +1,14 @@
 package com.mysticwater.thewitcher3bestiary;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,7 +16,7 @@ import android.widget.TextView;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-import static com.mysticwater.thewitcher3bestiary.BeastsContract.*;
+import static com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
 
 public class BeastItemActivity extends ActionBarActivity {

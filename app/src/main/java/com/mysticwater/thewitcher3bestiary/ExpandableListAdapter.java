@@ -1,15 +1,12 @@
 package com.mysticwater.thewitcher3bestiary;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.List;
@@ -44,9 +41,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
   @Override
   public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-    final String childText = (String)getChild(groupPosition, childPosition);
-    if (convertView == null)
-    {
+    final String childText = (String) getChild(groupPosition, childPosition);
+    if (convertView == null) {
       LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       convertView = infalInflater.inflate(R.layout.list_item, null);
     }
