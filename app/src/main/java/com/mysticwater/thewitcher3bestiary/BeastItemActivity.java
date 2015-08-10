@@ -14,8 +14,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
 
@@ -28,12 +26,6 @@ public class BeastItemActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
-
-    //Configure Calligraphy dependency
-    CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-      .setDefaultFontPath("fonts/PFDinThin.ttf")
-      .setFontAttrId(R.attr.fontPath)
-      .build());
 
     hideActionBar();
 
@@ -58,9 +50,9 @@ public class BeastItemActivity extends AppCompatActivity {
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
 
-    setFont(beastName, "morpheus.ttf");
+    setFont(beastName, "morpheus.ttf", "bold");
     setFont(beastType, "PFDinThin.ttf");
-    setFont(vulnerabilitiesLabel, "PFDinThin.ttf");
+    setFont(vulnerabilitiesLabel, "PFDinThin.ttf", "bold");
 
     TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
     for (String v : vulnerabilities) {
@@ -90,6 +82,13 @@ public class BeastItemActivity extends AppCompatActivity {
   private void setFont(TextView textView, String font) {
     Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
     textView.setTypeface(type);
+  }
+
+  private void setFont(TextView textView, String font, String style) {
+    Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
+    if (style.equals("bold")) {
+      textView.setTypeface(type, Typeface.BOLD);
+    }
   }
 
   private void hideActionBar() {
