@@ -20,6 +20,7 @@ import com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,7 +28,6 @@ public class MainActivity extends Activity {
 
   public final static String BEAST_ITEM = "com.mysticwater.thewitcher3bestiary.BEASTITEM";
 
-  private ExpandableListAdapter listAdapter;
   private ExpandableListView expandableListView;
   private List<String> listDataHeader;
   private HashMap<String, List<String>> listDataChild;
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
     setFont(heading, "morpheus.ttf");
 
     expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
-    listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+    ExpandableListAdapter listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
     //setting list adapter
     expandableListView.setAdapter(listAdapter);
@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
       values.put(BeastEntry.COLUMN_NAME_BEAST, beast[1]);
       values.put(BeastEntry.COLUMN_NAME_VULNERABILITIES, beast[2]);
 
-      long newRowId = db.insert(
+      db.insert(
         BeastEntry.TABLE_NAME,
         null,
         values
@@ -169,28 +169,40 @@ public class MainActivity extends Activity {
     listDataChild = new HashMap<String, List<String>>();
 
     for (String beast : listDataHeader) {
-      if (beast.equals("Beasts")) {
-        loadChild(beasts);
-      } else if (beast.equals("Cursed Ones")) {
-        loadChild(cursedOnes);
-      } else if (beast.equals("Draconids")) {
-        loadChild(draconids);
-      } else if (beast.equals("Elementa")) {
-        loadChild(elementa);
-      } else if (beast.equals("Hybrids")) {
-        loadChild(hybrids);
-      } else if (beast.equals("Insectoids")) {
-        loadChild(insectoids);
-      } else if (beast.equals("Necrophages")) {
-        loadChild(necrophages);
-      } else if (beast.equals("Ogroids")) {
-        loadChild(ogroids);
-      } else if (beast.equals("Relicts")) {
-        loadChild(relicts);
-      } else if (beast.equals("Specters")) {
-        loadChild(specters);
-      } else if (beast.equals("Vampires")) {
-        loadChild(vampires);
+      switch (beast) {
+        case "Beasts":
+          loadChild(beasts);
+          break;
+        case "Cursed Ones":
+          loadChild(cursedOnes);
+          break;
+        case "Draconids":
+          loadChild(draconids);
+          break;
+        case "Elementa":
+          loadChild(elementa);
+          break;
+        case "Hybrids":
+          loadChild(hybrids);
+          break;
+        case "Insectoids":
+          loadChild(insectoids);
+          break;
+        case "Necrophages":
+          loadChild(necrophages);
+          break;
+        case "Ogroids":
+          loadChild(ogroids);
+          break;
+        case "Relicts":
+          loadChild(relicts);
+          break;
+        case "Specters":
+          loadChild(specters);
+          break;
+        case "Vampires":
+          loadChild(vampires);
+          break;
       }
       listDataChild.put(beast, childList);
     }
@@ -198,15 +210,13 @@ public class MainActivity extends Activity {
 
   private void loadChild(String[] beasts) {
     childList = new ArrayList<String>();
-    for (String beast : beasts) {
-      childList.add(beast);
-    }
+    Collections.addAll(childList, beasts);
   }
 
   /**
    * Called when the user clicks an item in a list
    */
-  public void openItem(View view, String beast) {
+  private void openItem(View view, String beast) {
     Intent intent = new Intent(this, BeastItemActivity.class);
     intent.putExtra(BEAST_ITEM, beast);
     startActivity(intent);

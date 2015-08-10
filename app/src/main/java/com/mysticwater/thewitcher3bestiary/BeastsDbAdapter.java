@@ -60,7 +60,6 @@ public class BeastsDbAdapter {
 
   public BeastsDbAdapter open() throws SQLException {
     mDbHelper = new DatabaseHelper(mContext);
-    SQLiteDatabase mDb = mDbHelper.getWritableDatabase();
     return this;
   }
 
