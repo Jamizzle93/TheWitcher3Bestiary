@@ -11,15 +11,12 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by James on 17/06/2015.
- */
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-  private Context _context;
-  private List<String> _listDataHeader;
-  private HashMap<String, List<String>> _listDataChild;
-  Typeface bodyType;
+  private final Context _context;
+  private final List<String> _listDataHeader;
+  private final HashMap<String, List<String>> _listDataChild;
+  private final Typeface bodyType;
 
   public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                HashMap<String, List<String>> listDataChild) {

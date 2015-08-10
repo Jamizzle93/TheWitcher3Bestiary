@@ -2,7 +2,7 @@ package com.mysticwater.thewitcher3bestiary;
 
 import android.provider.BaseColumns;
 
-public final class BeastsContract {
+final class BeastsContract {
 
   public BeastsContract() {
   }

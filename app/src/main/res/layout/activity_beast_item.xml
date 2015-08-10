@@ -26,7 +26,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Beast"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="55sp"/>
@@ -39,14 +38,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:gravity="center"
-                android:text="type"
                 android:textAlignment="center"
-                fontPath="fonts/PFDinThin.ttf"
                 android:textColor="@color/orange"
                 android:textSize="32sp"/>
 
             <ImageView
                 android:id="@+id/beastImage"
+                android:contentDescription="Image of beast"
                 android:layout_width="200sp"
                 android:layout_height="200sp"
                 android:layout_below="@+id/typeValue"
@@ -60,7 +58,7 @@
                 android:layout_below="@+id/beastImage"
                 android:layout_marginTop="25sp"
                 android:gravity="center"
-                android:text="VULNERABLE AGAINST:"
+                android:text="@string/vulnerabilitiesHeading"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="26sp"/>

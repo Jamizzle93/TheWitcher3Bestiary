@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
 
-public class BeastItemActivity extends ActionBarActivity {
+public class BeastItemActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class BeastItemActivity extends ActionBarActivity {
     TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
     for (String v : vulnerabilities) {
       TableRow tr = new TableRow(this);
-      tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+      tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
       int imageRes = getResources().getIdentifier(trimString(v), "drawable", this.getPackageName());
       ImageView vulnerabilityImage = new ImageView(this);
@@ -104,8 +105,7 @@ public class BeastItemActivity extends ActionBarActivity {
   }
 
   private String[] retrieveVulnerabilities(String s) {
-    String[] splitArray = s.split("\\. ");
-    return splitArray;
+    return s.split("\\. ");
   }
 
   private String[] readFromDatabase(String beastName) {
@@ -140,7 +140,9 @@ public class BeastItemActivity extends ActionBarActivity {
         beastData[1] = (c.getString(c.getColumnIndex("type")));
         beastData[2] = (c.getString(c.getColumnIndex("vulnerabilities")));
       }
+      c.close();
     }
+
     return beastData;
   }
 

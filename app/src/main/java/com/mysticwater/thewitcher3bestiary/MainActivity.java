@@ -27,11 +27,11 @@ public class MainActivity extends Activity {
 
   public final static String BEAST_ITEM = "com.mysticwater.thewitcher3bestiary.BEASTITEM";
 
-  ExpandableListAdapter listAdapter;
-  ExpandableListView expandableListView;
-  List<String> listDataHeader;
-  HashMap<String, List<String>> listDataChild;
-  List<String> childList;
+  private ExpandableListAdapter listAdapter;
+  private ExpandableListView expandableListView;
+  private List<String> listDataHeader;
+  private HashMap<String, List<String>> listDataChild;
+  private List<String> childList;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +102,8 @@ public class MainActivity extends Activity {
         c.moveToNext();
       }
     }
+    c.close();
+
     createCollections();
   }
 

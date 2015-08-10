@@ -7,11 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by James on 02/08/2015.
- */
-public class CSVReader {
-  InputStream inputStream;
+class CSVReader {
+  private final InputStream inputStream;
 
   public CSVReader(InputStream is) {
     this.inputStream = is;

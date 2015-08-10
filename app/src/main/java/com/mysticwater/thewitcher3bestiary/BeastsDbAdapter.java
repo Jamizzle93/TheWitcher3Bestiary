@@ -8,9 +8,6 @@ import java.sql.SQLException;
 
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
-/**
- * Created by James on 01/08/2015.
- */
 public class BeastsDbAdapter {
 
   private static final String TEXT_TYPE = " TEXT";
@@ -25,11 +22,10 @@ public class BeastsDbAdapter {
 
   private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + BeastEntry.TABLE_NAME;
 
-  public static final int DATABASE_VERSION = 1;
-  public static final String DATABASE_NAME = "Beasts.db";
+  private static final int DATABASE_VERSION = 1;
+  private static final String DATABASE_NAME = "Beasts.db";
 
   private DatabaseHelper mDbHelper;
-  private SQLiteDatabase mDb;
 
   private final Context mContext;
 
@@ -64,7 +60,7 @@ public class BeastsDbAdapter {
 
   public BeastsDbAdapter open() throws SQLException {
     mDbHelper = new DatabaseHelper(mContext);
-    mDb = mDbHelper.getWritableDatabase();
+    SQLiteDatabase mDb = mDbHelper.getWritableDatabase();
     return this;
   }
 
