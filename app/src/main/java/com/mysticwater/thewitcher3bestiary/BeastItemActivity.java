@@ -5,24 +5,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import java.lang.reflect.Method;
-import java.sql.SQLOutput;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -34,30 +27,32 @@ public class BeastItemActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_beast_item);
 
+    Intent intent = getIntent();
+    String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
+
+    //Configure Calligraphy dependency
     CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
       .setDefaultFontPath("fonts/PFDinThin.ttf")
       .setFontAttrId(R.attr.fontPath)
       .build());
 
-    ActionBar actionBar = getSupportActionBar();
-    if (actionBar != null) {
-      actionBar.hide();
-    }
-    setContentView(R.layout.activity_beast_item);
-    Intent intent = getIntent();
-    String message = intent.getStringExtra(MainActivity.BEAST_ITEM);
+    hideActionBar();
 
     String[] beastData = readFromDatabase(message);
 
+    //Set name text
     AutoResizeTextView beastName = (AutoResizeTextView) findViewById(R.id.beastName);
-    TextView beastType = (TextView) findViewById(R.id.typeValue);
-    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
-
     beastName.setText(beastData[0].toUpperCase());
+
+    //Set type text
+    TextView beastType = (TextView) findViewById(R.id.typeValue);
     beastType.setText(beastData[1].toUpperCase());
 
-    int res = getResources().getIdentifier(convertBeastName(beastData[0]), "drawable", this.getPackageName());
+    //Set image
+    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
+    int res = getResources().getIdentifier(trimString(beastData[0]), "drawable", this.getPackageName());
     if (res == 0) {
       res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
     }
@@ -66,31 +61,27 @@ public class BeastItemActivity extends ActionBarActivity {
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
 
-    Typeface titleType = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
-    Typeface bodyType = Typeface.createFromAsset(getAssets(), "fonts/PFDinThin.ttf");
-
-    beastName.setTypeface(titleType);
-    beastType.setTypeface(bodyType);
-    vulnerabilitiesLabel.setTypeface(bodyType);
+    setFont(beastName, "morpheus.ttf");
+    setFont(beastType, "PFDinThin.ttf");
+    setFont(vulnerabilitiesLabel, "PFDinThin.ttf");
 
     TableLayout tl = (TableLayout) findViewById(R.id.TableLayout01);
     for (String v : vulnerabilities) {
       TableRow tr = new TableRow(this);
       tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-      TextView vulnerability = new TextView(this);
 
-      vulnerability.setPadding(25, 0, 0, 0);
-
-      System.out.println(convertBeastName(v));
-
-      vulnerability.setText(v);
-      vulnerability.setTextColor(getResources().getColor(R.color.orange));
-      vulnerability.setTypeface(bodyType);
-      vulnerability.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
-      int imageRes = getResources().getIdentifier(convertBeastName(v), "drawable", this.getPackageName());
+      int imageRes = getResources().getIdentifier(trimString(v), "drawable", this.getPackageName());
       ImageView vulnerabilityImage = new ImageView(this);
       vulnerabilityImage.setPadding(0, 0, 0, 25);
       vulnerabilityImage.setImageResource(imageRes);
+
+      TextView vulnerability = new TextView(this);
+      vulnerability.setText(v);
+      vulnerability.setTextColor(getResources().getColor(R.color.orange));
+      setFont(vulnerability, "PFDinThin.ttf");
+      vulnerability.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
+
+      vulnerability.setPadding(25, 0, 0, 0);
       vulnerabilityImage.requestLayout();
 
       tr.addView(vulnerabilityImage);
@@ -99,7 +90,19 @@ public class BeastItemActivity extends ActionBarActivity {
     }
   }
 
-  private String convertBeastName(String s) {
+  private void setFont(TextView textView, String font) {
+    Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
+    textView.setTypeface(type);
+  }
+
+  private void hideActionBar() {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.hide();
+    }
+  }
+
+  private String trimString(String s) {
     return s.replaceAll("\\s+", "").replaceAll("\'", "").toLowerCase();
   }
 
@@ -158,25 +161,4 @@ public class BeastItemActivity extends ActionBarActivity {
 
     return super.onOptionsItemSelected(item);
   }
-
-  /**
-   * Method taken from http://stackoverflow.com/questions/10766716/set-font-for-all-textviews-in-activity
-   */
-  private void overrideFonts(final Context context, final View v) {
-    try {
-      if (v instanceof ViewGroup) {
-        ViewGroup vg = (ViewGroup) v;
-        for (int i = 0; i < vg.getChildCount(); i++) {
-          View child = vg.getChildAt(i);
-          overrideFonts(context, child);
-        }
-      } else if (v instanceof TextView) {
-        ((TextView) v).setTypeface(Typeface.createFromAsset(context.getAssets(), "font.ttf"));
-      }
-    } catch (Exception e) {
-      throw new RuntimeException("Failed to overrideFonts");
-    }
-  }
-
-
 }

@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 import com.mysticwater.thewitcher3bestiary.CSVReader;
 
+import org.w3c.dom.Text;
+
 import java.io.FileReader;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -38,25 +40,21 @@ public class MainActivity extends Activity {
   List<String> listDataHeader;
   HashMap<String, List<String>> listDataChild;
   List<String> childList;
-  EditText search;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    TextView heading = (TextView) findViewById(R.id.listHeading);
-    Typeface titleType = Typeface.createFromAsset(getAssets(), "fonts/morpheus.ttf");
-    heading.setTypeface(titleType);
-    //get the listview
-    expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
-
-    createGroupList();
-    createCollections();
+    //Create database and produce headers
     createDatabaseFromCsv();
-
     processHeaders();
 
+    //Set font for heading
+    TextView heading = (TextView) findViewById(R.id.listHeading);
+    setFont(heading, "morpheus.ttf");
+
+    expandableListView = (ExpandableListView) findViewById(R.id.beastListView);
     listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
     //setting list adapter
@@ -84,6 +82,35 @@ public class MainActivity extends Activity {
         return false;
       }
     });
+  }
+
+  private void setFont(TextView textView, String font) {
+    Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
+    textView.setTypeface(type);
+  }
+
+  private void processHeaders() {
+    BeastsDbHelper mDbHelper = new BeastsDbHelper(getBaseContext());
+    SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+    String query = "select * from " + BeastEntry.TABLE_NAME;
+    Cursor c = db.rawQuery(query, null);
+
+    listDataHeader = new ArrayList<String>();
+
+    if (c.moveToFirst()) {
+      while (!c.isAfterLast()) {
+        String type = c.getString(c.getColumnIndex(BeastEntry.COLUMN_NAME_TYPE));
+
+        //Build Headers
+        if (!(listDataHeader.contains(type))) {
+          listDataHeader.add(type);
+        }
+
+        c.moveToNext();
+      }
+    }
+    createCollections();
   }
 
   private void createDatabaseFromCsv() {
@@ -127,23 +154,7 @@ public class MainActivity extends Activity {
     if (id == R.id.action_settings) {
       return true;
     }
-
     return super.onOptionsItemSelected(item);
-  }
-
-  private void createGroupList() {
-    listDataHeader = new ArrayList<String>();
-    listDataHeader.add("Beasts");
-    listDataHeader.add("Cursed Ones");
-    listDataHeader.add("Draconids");
-    listDataHeader.add("Elementa");
-    listDataHeader.add("Hybrids");
-    listDataHeader.add("Insectoids");
-    listDataHeader.add("Necrophages");
-    listDataHeader.add("Ogroids");
-    listDataHeader.add("Relicts");
-    listDataHeader.add("Specters");
-    listDataHeader.add("Vampires");
   }
 
   private void createCollections() {
@@ -206,28 +217,4 @@ public class MainActivity extends Activity {
     intent.putExtra(BEAST_ITEM, beast);
     startActivity(intent);
   }
-
-  private void processHeaders() {
-    BeastsDbHelper mDbHelper = new BeastsDbHelper(getBaseContext());
-    SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-    String query = "select * from " + BeastEntry.TABLE_NAME;
-    System.out.println("Query: " + query);
-    Cursor c = db.rawQuery(query, null);
-
-    listDataHeader = new ArrayList<String>();
-    listDataChild = new HashMap<String, List<String>>();
-
-    if (c.moveToFirst()) {
-      while (!c.isAfterLast()) {
-        String type = c.getString(c.getColumnIndex(BeastEntry.COLUMN_NAME_TYPE));
-
-        //Build Headers
-        if (!(listDataHeader.contains(type))) {
-          listDataHeader.add(type);
-        }
-      }
-    }
-  }
-
 }
