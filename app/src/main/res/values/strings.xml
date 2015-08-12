@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">The Witcher 3 Bestiary</string>
+g    <string name="app_name">The Witcher 3 Bestiary</string>
 
     <string name="action_settings">Settings</string>
 
@@ -29,6 +29,8 @@
         <item>Basilisk</item>
         <item>Cockatrice</item>
         <item>Forktail</item>
+        <item>Shrieker</item>
+        <item>The Dragon of Fyresdal</item>
         <item>Wyvern</item>
     </string-array>
 
@@ -41,6 +43,7 @@
         <item>Golem</item>
         <item>Hound of the Wild Hunt</item>
         <item>Ice Elemental</item>
+        <item>Therazane</item>
     </string-array>
 
     <string-array
@@ -48,6 +51,9 @@
         <item>Erynia</item>
         <item>Griffin</item>
         <item>Harpy</item>
+        <item>Melusine</item>
+        <item>Opinicus</item>
+        <item>Salma</item>
         <item>Siren</item>
         <item>Succubus</item>
     </string-array>
@@ -59,16 +65,20 @@
         <item>Endrega drone</item>
         <item>Endrega warrior</item>
         <item>Endrega worker</item>
+        <item>Harrisi</item>
         <item>Venomous Arachasae</item>
     </string-array>
 
     <string-array
         name="necrophages">
+        <item>Abaya</item>
         <item>Alghoul</item>
         <item>Drowner</item>
         <item>Foglet</item>
         <item>Ghoul</item>
         <item>Grave hag</item>
+        <item>Ignis Fatuus</item>
+        <item>Mourntart</item>
         <item>Rotfiend</item>
         <item>Water hag</item>
     </string-array>
@@ -76,37 +86,52 @@
     <string-array
         name="ogroids">
         <item>Cyclops</item>
+        <item>Hagubman</item>
         <item>Ice Giant</item>
         <item>Ice troll</item>
         <item>Nekker</item>
         <item>Rock troll</item>
+        <item>Wham-a-Wham</item>
 #    </string-array>
 
     <string-array
         name="relicts">
         <item>Chort</item>
         <item>Crones</item>
+        <item>Doppler</item>
         <item>Fiend</item>
         <item>Godling</item>
+        <item>Howler</item>
+        <item>Imp</item>
+        <item>Kernun</item>
         <item>Leshen</item>
+        <item>Morvudd</item>
         <item>Sylvan</item>
+        <item>Woodland Spirit</item>
     </string-array>
 
     <string-array
         name="specters">
+        <item>Devil by the Well</item>
         <item>Hym</item>
+        <item>Jenny o\' the Woods</item>
         <item>Nightwraith</item>
         <item>Noonwraith</item>
+        <item>Penitent</item>
         <item>Plague Maiden</item>
+        <item>The White Lady</item>
         <item>Wraith</item>
     </string-array>
 
     <string-array
         name="vampires">
         <item>Ekimmara</item>
+        <item>Gael</item>
         <item>Higher Vampire</item>
         <item>Katakan</item>
+        <item>Sarasti</item>
     </string-array>
+
     <string name="title_activity_splash_screen">SplashScreen</string>
 
     <string name="hello_world">Hello world!</string>

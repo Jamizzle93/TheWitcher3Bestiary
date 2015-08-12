@@ -1,55 +1,80 @@
-Beasts,Bear,Beast Oil. Quen Sign,"Bears are omnivores - meaning men find a place in their diet beside berries, roots and salmon. When they snack on humans, they most frequently partake of the meat of travelers unwittingly trespassing on their territory or else that of hunters for whom besting such a creature is a lifelong ambition.\nThere are several subspecies of bears - black bears, polar bears and cave bears - which differ from one another in coloring as well as in size and strength. All share one trait in common, however: a near-unmatched ability to kill. \nBears are found far from human habitation, in high mountains or deep woods. They are solitary creatures - and a good thing they are, for defeating a single bear is a challenge to anyone, experienced witchers included. Fighting a bear should be avoided, but if it cannot, one should not try to run away - these seemingly clumsy animal can run at an astonishingly high speed, especially if angered."
-Beasts,Dog,Beast Oil,
-Beasts,Wolf,Beast Oil,
-Cursed Ones,Berserker,Cursed Oil. Quen Sign. Igni Sign. Devil's Puffball Bomb,
-Cursed Ones,Botchling,Cursed Oil. Axii Sign,
-Cursed Ones,Ulfhedinn,Cursed Oil. Igni Sign. Moon Dust Bomb. Devil's Puffball Bomb,
-Cursed Ones,Werewolf,Cursed Oil. Igni Sign. Moon Dust Bomb. Devil's Puffball Bomb,
-Draconids,Basilisk,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb,
-Draconids,Cockatrice,Draconid Oil. Aard Sign. Grapeshot Bomb,
-Draconids,Forktail,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb,
-Draconids,Wyvern,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb,
-Elementa,Djinn,Elementa Oil. Dimeritium Bomb,
-Elementa,Earth Elemental,Elementa Oil. Dimeritium Bomb,
-Elementa,Fire Elemental,Elementa Oil. Dimeritium Bomb. Northern Wind Bomb. Aard Sign,
-Elementa,Gargoyle,Elementa Oil. Dimeritium Bomb. Quen Sign,
-Elementa,Golem,Elementa Oil. Dimeritium Bomb,
-Elementa,Hound of the Wild Hunt,Elementa Oil. Dimeritium Bomb. Igni Sign. Axii Sign,
-Elementa,Ice Elemental,Elementa Oil. Dimeritium Bomb,
-Hybrids,Erynia,Hybrid Oil. Grapeshot Bomb. Aard Sign,
-Hybrids,Griffin,Hybrid Oil. Grapeshot Bomb. Aard Sign,
-Hybrids,Harpy,Hybrid Oil. Grapeshot Bomb. Aard Sign,
-Hybrids,Siren,Hybrid Oil. Grapeshot Bomb. Aard Sign. Igni Sign,
-Hybrids,Succubus,Hybrid Oil. Quen Sign,
-Insectoids,Arachasae,Insectoid Oil. Golden Oriole Potion,
-Insectoids,Armored Arachasae,Insectoid Oil. Golden Oriole Potion,
-Insectoids,Endrega drone,Insectoid Oil. Golden Oriole Potion,
-Insectoids,Endrega warrior,Insectoid Oil. Golden Oriole Potion,
-Insectoids,Endrega worker,Insectoid Oil. Golden Oriole Potion,
-Insectoids,Venomous Arachasae,Insectoid Oil. Golden Oriole Potion,
-Necrophages,Alghoul,Necrophage Oil. Axii Sign,
-Necrophages,Drowner,Necrophage Oil. Igni Sign,
-Necrophages,Foglet,Necrophage Oil. Moon Dust Bomb. Quen Sign,
-Necrophages,Ghoul,Necrophage Oil,
-Necrophages,Grave hag,Necrophage Oil. Black Blood Potion. Yrden Sign. Quen Sign,
-Necrophages,Rotfiend,Necrophage Oil,
-Necrophages,Water hag,Necrophage Oil. Northern Wind Bomb. Quen Sign. Igni Sign,
-Ogroids,Cyclops,Ogroid Oil. Axii Sign. Quen Sign,
-Ogroids,Ice Giant,Ogroid Oil. Quen Sign,
-Ogroids,Ice troll,Ogroid Oil. Quen Sign,
-Ogroids,Nekker,Ogroid Oil. Northern Wind Bomb,
-Ogroids,Rock troll,Ogroid Oil. Quen Sign,
-Relicts,Chort,Relict Oil. Devil's Puffball Bomb,
-Relicts,Crones,Relict Oil. Quen Sign,
-Relicts,Fiend,Relict Oil. Samum Bomb. Devil's Puffball Bomb,
-Relicts,Godling,None,
-Relicts,Leshen,Relict Oil. Dimeritium Bomb. Igni Sign,
-Relicts,Sylvan,Relict Oil. Samum Bomb. Devil's Puffball Bomb. Igni Sign,
-Specters,Hym,Specter Oil. Moon Dust Bomb. Igni Sign,
-Specters,Nightwraith,Specter Oil. Moon Dust Bomb. Yrden Sign,
-Specters,Noonwraith,Specter Oil. Moon Dust Bomb. Yrden Sign,
-Specters,Plague Maiden,Specter Oil. Yrden Sign,
-Specters,Wraith,Specter Oil. Moon Dust Bomb. Yrden Sign. Quen Sign,
-Vampires,Ekimmara,Vampire Oil. Devil's Puffball Bomb. Igni Sign,
-Vampires,Higher Vampire,Vampire Oil. Igni Sign,
-Vampires,Katakan,Vampire Oil. Moon Dust Bomb. Devil's Puffball Bomb. Yrden Sign. Igni Sign,
+
+Beasts,Bear,Beast Oil. Quen Sign
+Beasts,Dog,Beast Oil
+Beasts,Wolf,Beast Oil
+Cursed Ones,Berserker,Cursed Oil. Quen Sign. Igni Sign. Devil's Puffball Bomb
+Cursed Ones,Botchling,Cursed Oil. Axii Sign
+Cursed Ones,Ulfhedinn,Cursed Oil. Igni Sign. Moon Dust Bomb. Devil's Puffball Bomb
+Cursed Ones,Werewolf,Cursed Oil. Igni Sign. Moon Dust Bomb. Devil's Puffball Bomb
+Draconids,Basilisk,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb
+Draconids,Cockatrice,Draconid Oil. Aard Sign. Grapeshot Bomb
+Draconids,Forktail,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb
+Draconids,Shrieker,Draconid Oil. Aard Sign. Grapeshot Bomb
+Draconids,The Dragon of Fyresdal,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb
+Draconids,Wyvern,Draconid Oil. Aard Sign. Golden Oriole Potion. Grapeshot Bomb
+Elementa,Djinn,Elementa Oil. Dimeritium Bomb
+Elementa,Earth Elemental,Elementa Oil. Dimeritium Bomb
+Elementa,Fire Elemental,Elementa Oil. Dimeritium Bomb. Northern Wind Bomb. Aard Sign
+Elementa,Gargoyle,Elementa Oil. Dimeritium Bomb. Quen Sign
+Elementa,Golem,Elementa Oil. Dimeritium Bomb
+Elementa,Hound of the Wild Hunt,Elementa Oil. Dimeritium Bomb. Igni Sign. Axii Sign
+Elementa,Ice Elemental,Elementa Oil. Dimeritium Bomb
+Elementa,Therazane,Elementa Oil. Dimeritium Bomb
+Hybrids,Erynia,Hybrid Oil. Grapeshot Bomb. Aard Sign
+Hybrids,Griffin,Hybrid Oil. Grapeshot Bomb. Aard Sign
+Hybrids,Harpy,Hybrid Oil. Grapeshot Bomb. Aard Sign
+Hybrids,Melusine,Hybrid Oil. Grapeshot Bomb. Aard Sign. Igni Sign
+Hybrids,Opinicus,Hybrid Oil. Grapeshot Bomb. Aard Sign
+Hybrids,Salma,Hybrid Oil. Quen Sign
+Hybrids,Siren,Hybrid Oil. Grapeshot Bomb. Aard Sign. Igni Sign
+Hybrids,Succubus,Hybrid Oil. Quen Sign
+Insectoids,Arachasae,Insectoid Oil. Golden Oriole Potion
+Insectoids,Armored Arachasae,Insectoid Oil. Golden Oriole Potion
+Insectoids,Endrega drone,Insectoid Oil. Golden Oriole Potion
+Insectoids,Endrega warrior,Insectoid Oil. Golden Oriole Potion
+Insectoids,Endrega worker,Insectoid Oil. Golden Oriole Potion
+Insectoids,Harrisi,Insectoid Oil. Golden Oriole Potion
+Insectoids,Venomous Arachasae,Insectoid Oil. Golden Oriole Potion
+Necrophages,Abaya,Necrophage Oil. Northern Wind Bomb. Quen Sign. Igni Sign
+Necrophages,Alghoul,Necrophage Oil. Axii Sign
+Necrophages,Drowner,Necrophage Oil. Igni Sign
+Necrophages,Foglet,Necrophage Oil. Moon Dust Bomb. Quen Sign
+Necrophages,Ghoul,Necrophage Oil
+Necrophages,Grave hag,Necrophage Oil. Black Blood Potion. Yrden Sign. Quen Sign
+Necrophages,Ignis Fatuus,Necrophage Oil. Moon Dust Bomb. Quen Sign
+Necrophages,Mourntart,Necrophage Oil. Black Blood Potion. Yrden Sign. Quen Sign
+Necrophages,Rotfiend,Necrophage Oil
+Necrophages,Water hag,Necrophage Oil. Northern Wind Bomb. Quen Sign. Igni Sign
+Ogroids,Cyclops,Ogroid Oil. Axii Sign. Quen Sign
+Ogroids,Hagubman,Ogroid Oil. Northern Wind Bomb
+Ogroids,Ice Giant,Ogroid Oil. Quen Sign
+Ogroids,Ice troll,Ogroid Oil. Quen Sign
+Ogroids,Nekker,Ogroid Oil. Northern Wind Bomb
+Ogroids,Rock troll,Ogroid Oil. Quen Sign
+Ogroids,Wham-a-Wham,Ogroid Oil. Quen Sign
+Relicts,Chort,Relict Oil. Devil's Puffball Bomb
+Relicts,Crones,Relict Oil. Quen Sign
+Relicts,Doppler,Relict Oil
+Relicts,Fiend,Relict Oil. Samum Bomb. Devil's Puffball Bomb
+Relicts,Godling,
+Relicts,Howler,Relict Oil. Devil's Puffball Bomb
+Relicts,Imp,Relict Oil
+Relicts,Kernun,Relict Oil. Dimeritium Bomb. Igni Sign
+Relicts,Leshen,Relict Oil. Dimeritium Bomb. Igni Sign
+Relicts,Morvudd,Relict Oil. Samum Bomb. Devil's Puffball Bomb
+Relicts,Sylvan,Relict Oil. Samum Bomb. Devil's Puffball Bomb. Igni Sign
+Relicts,Woodland Spirit,Relict Oil. Dimeritium Bomb. Igni Sign
+Specters,Devil by the Well,Specter Oil. Moon Dust Bomb. Yrden Sign
+Specters,Hym,Specter Oil. Moon Dust Bomb. Igni Sign
+Specters,Jenny o' the Woods,Specter Oil. Moon Dust Bomb. Yrden Sign
+Specters,Nightwraith,Specter Oil. Moon Dust Bomb. Yrden Sign
+Specters,Noonwraith,Specter Oil. Moon Dust Bomb. Yrden Sign
+Specters,Penitent,Specter Oil. Moon Dust Bomb. Yrden Sign. Quen Sign
+Specters,Plague Maiden,Specter Oil. Yrden Sign
+Specters,The White Lady,Specter Oil. Moon Dust Bomb. Yrden Sign
+Specters,Wraith,Specter Oil. Moon Dust Bomb. Yrden Sign. Quen Sign
+Vampires,Ekimmara,Vampire Oil. Devil's Puffball Bomb. Igni Sign
+Vampires,Gael,Vampire Oil. Moon Dust Bomb. Devil's Puffball Bomb. Yrden Sign. Igni Sign
+Vampires,Higher Vampire,Vampire Oil. Igni Sign
+Vampires,Katakan,Vampire Oil. Moon Dust Bomb. Devil's Puffball Bomb. Yrden Sign. Igni Sign
+Vampires,Sarasti,Vampire Oil. Devil's Puffball Bomb. Igni Sign
