@@ -14,10 +14,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.cloudinary.Cloudinary;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.mysticwater.thewitcher3bestiary.BeastsContract.BeastEntry;
 
 
 public class BeastItemActivity extends AppCompatActivity {
+
+  private Cloudinary cloudinary;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,8 @@ public class BeastItemActivity extends AppCompatActivity {
 
     hideActionBar();
 
+    setupCloudinary();
+
     String[] beastData = readFromDatabase(message);
 
     //Set name text
@@ -37,6 +46,7 @@ public class BeastItemActivity extends AppCompatActivity {
 
     //Set type text
     TextView beastType = (TextView) findViewById(R.id.typeValue);
+    System.out.println("Name: " + beastData[0]);
     beastType.setText(beastData[1].toUpperCase());
 
     //Set image
@@ -47,7 +57,8 @@ public class BeastItemActivity extends AppCompatActivity {
 //    }
 //    beastImage.setImageResource(res);
 
-    new DownloadImageTask((ImageView) findViewById(R.id.beastImage)).execute("http://res.cloudinary.com/dizywag3h/image/upload/v1439237675/alghoul_fdkdwk.png");
+    String imageUrl = cloudinary.url().resourceType("image").generate("beasts/" + trimString(beastData[0]) + ".png");
+    new DownloadImageTask((ImageView) findViewById(R.id.beastImage)).execute(imageUrl);
 
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
@@ -81,6 +92,19 @@ public class BeastItemActivity extends AppCompatActivity {
     }
   }
 
+  private void setupCloudinary() {
+    Map config = new HashMap();
+    config.put("cloud_name", "dizywag3h");
+    config.put("api_key", "344649216725598");
+    config.put("api_secret", "eV-gqo3PFOe3pFPHD9_F7HONiG8");
+    cloudinary = new Cloudinary(config);
+  }
+
+  private String getImageUrl(String beast) {
+    String url = "http://res.cloudinary.com/dizywag3h/image/upload/";
+    return url + beast + ".png";
+  }
+
   private void setFont(TextView textView, String font) {
     Typeface type = Typeface.createFromAsset(getAssets(), "fonts/" + font);
     textView.setTypeface(type);
@@ -101,7 +125,7 @@ public class BeastItemActivity extends AppCompatActivity {
   }
 
   private String trimString(String s) {
-    return s.replaceAll("\\s+", "").replaceAll("\'", "").toLowerCase();
+    return s.replaceAll("\\s+", "").replaceAll("\'", "").replaceAll("-", "").toLowerCase();
   }
 
   private String[] retrieveVulnerabilities(String s) {
