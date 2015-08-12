@@ -40,12 +40,14 @@ public class BeastItemActivity extends AppCompatActivity {
     beastType.setText(beastData[1].toUpperCase());
 
     //Set image
-    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
-    int res = getResources().getIdentifier(trimString(beastData[0]), "drawable", this.getPackageName());
-    if (res == 0) {
-      res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
-    }
-    beastImage.setImageResource(res);
+//    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
+//    int res = getResources().getIdentifier(trimString(beastData[0]), "drawable", this.getPackageName());
+//    if (res == 0) {
+//      res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
+//    }
+//    beastImage.setImageResource(res);
+
+    new DownloadImageTask((ImageView) findViewById(R.id.beastImage)).execute("http://res.cloudinary.com/dizywag3h/image/upload/v1439237675/alghoul_fdkdwk.png");
 
     TextView vulnerabilitiesLabel = (TextView) findViewById(R.id.vulnerabilitiesLabel);
     String[] vulnerabilities = retrieveVulnerabilities(beastData[2]);
