@@ -48,14 +48,8 @@ public class BeastItemActivity extends AppCompatActivity {
     TextView beastType = (TextView) findViewById(R.id.typeValue);
     System.out.println("Name: " + beastData[0]);
     beastType.setText(beastData[1].toUpperCase());
-
-    //Set image
-//    ImageView beastImage = (ImageView) findViewById(R.id.beastImage);
-//    int res = getResources().getIdentifier(trimString(beastData[0]), "drawable", this.getPackageName());
-//    if (res == 0) {
-//      res = getResources().getIdentifier("bear", "drawable", this.getPackageName());
-//    }
-//    beastImage.setImageResource(res);
+    final String DOUBLE_BYTE_SPACE = "\u3000";
+    beastType.append(DOUBLE_BYTE_SPACE);
 
     String imageUrl = cloudinary.url().resourceType("image").generate("beasts/" + trimString(beastData[0]) + ".png");
     new DownloadImageTask((ImageView) findViewById(R.id.beastImage)).execute(imageUrl);
